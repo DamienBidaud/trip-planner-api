@@ -1,0 +1,43 @@
+# import Activity from './generated/prisma.graphql'
+# import Location from './generated/prisma.graphql'
+# import Author from './generated/prisma.graphql'
+
+type Query {
+  activities(authorId: ID!): [Activity!]!
+  validateAuth(token: String!): String
+  activity(activityID: ID!): Activity!
+  locations: [Location!]!
+}
+
+type Mutation {
+  createActivity(
+    tripID: ID!
+    title: String!
+    locations: LocationCreateManyInput!
+    price: Float
+    startDate: DateTime
+    endDate: DateTime
+  ): Activity
+  updateActivity(
+    activityID: ID!
+    title: String
+    locations: LocationUpdateManyInput
+    price: Float
+    startDate: DateTime
+    endDate: DateTime
+    type: String
+    description: String
+  ): Activity
+  deleteActivity(activityID: ID!): Activity
+  createTrip(
+    authorId: ID!
+    title: String!
+  ): Trip
+  signup(email: String!, password: String!, username: String!): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+}
+
+type AuthPayload {
+  token: String!
+  author: Author!
+}

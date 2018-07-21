@@ -1,0 +1,16 @@
+{
+  "name": "trip-planner-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "graphql-yoga": "^1.14.10",
+    "jsonwebtoken": "^8.3.0",
+    "prisma": "^1.10.2",
+    "prisma-binding": "^2.1.0"
+  }
+}

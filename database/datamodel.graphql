@@ -1,0 +1,45 @@
+type Activity {
+  id: ID! @unique
+  title: String!
+  locations: [Location!]!
+  price: Float
+  startDate: DateTime
+  endDate: DateTime
+  type: String
+  description: String
+}
+
+type Location {
+  id: ID! @unique
+  country: String!
+  city: String!
+  longitude: String
+  latitude: String
+  type: LocationType! @default(value: "UNIQUE")
+}
+
+type Trip {
+  id: ID! @unique
+  title: String!
+  activities: [Activity!]!
+}
+
+type Author {
+  id: ID! @unique
+  email: String! @unique
+  username: String!
+  password: String!
+  trips: [Trip!]!
+  role: Role! @default(value: "USER")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum LocationType {
+  ORIGIN
+  DESTINATION
+  UNIQUE
+}

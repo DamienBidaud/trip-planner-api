@@ -3,10 +3,10 @@
 # import Author from './generated/prisma.graphql'
 
 type Query {
-  activities(authorId: ID!): [Activity!]!
   validateAuth(token: String!): String
   activity(activityID: ID!): Activity!
   locations: [Location!]!
+  author(token: String!): Author
 }
 
 type Mutation {

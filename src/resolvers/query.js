@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken");
-const { getActivity } = require("../utils");
+const { getActivity, getTrip } = require("../utils");
 
 const validateAuth = (_, args, context, info) => {
   const { token } = args;
   try {
-    console.log(token)
     var decoded = jwt.verify(token, process.env.APP_SECRET);
     return decoded.authorId;
   } catch (err) {
@@ -13,7 +12,9 @@ const validateAuth = (_, args, context, info) => {
   }
 };
 
-const activity = (_, args, context, info) => console.log(info) || getActivity(args.activityID, context, info);
+const activity = (_, args, context, info) => getActivity(args.activityID, context, info);
+
+const trip = (_, args, context, info) => getTrip(args.tripId, context, info)
 
 const locations = (_, args, context, info) => {
   return context.prisma.query.locations({}, info);
@@ -38,5 +39,6 @@ module.exports = {
   validateAuth,
   activity,
   locations,
-  author
+  author,
+  trip
 };

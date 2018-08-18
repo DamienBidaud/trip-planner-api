@@ -72,7 +72,7 @@ const createActivity = async (root, args, context, info) => {
   );
 
   if (!trip) {
-    throw new Error(`No author with id ${tripID}`);
+    throw new Error(`No trip with id ${tripID}`);
   }
 
   const newActivity = await context.prisma.mutation.createActivity(

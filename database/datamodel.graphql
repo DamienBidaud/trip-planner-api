@@ -16,6 +16,7 @@ type Location {
   longitude: String
   latitude: String
   type: LocationType! @default(value: "UNIQUE")
+  googleUrl: String
 }
 
 type Trip {

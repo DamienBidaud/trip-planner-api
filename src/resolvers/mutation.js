@@ -61,7 +61,7 @@ const login = async (root, args, context, info) => {
 };
 
 const createActivity = async (root, args, context, info) => {
-  const { tripID, title, locations, price, startDate, endDate } = args;
+  const { tripID, title, locations, price, startDate, endDate, type } = args;
   const trip = await context.prisma.query.trip(
     {
       where: {
@@ -82,7 +82,8 @@ const createActivity = async (root, args, context, info) => {
         locations,
         price,
         startDate,
-        endDate
+        endDate,
+        type
       }
     },
     `{ id }`

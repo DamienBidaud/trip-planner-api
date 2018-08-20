@@ -18,6 +18,7 @@ type Mutation {
     price: Float
     startDate: DateTime
     endDate: DateTime
+    type: String
   ): Activity
   updateActivity(
     activityID: ID!

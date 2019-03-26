@@ -171,12 +171,42 @@ const updateActivity = async (root, args, context, info) => {
   }, info)
 };
 
-const deleteActivity = async = (root, args, context, info) => {
+const deleteActivity = async (root, args, context, info) => {
   return context.prisma.mutation.deleteActivity({
     where: {
       id: args.activityID
     }
   }, info)
+};
+
+const requestFriendship = async (root, args, context, info) => {
+  const { authorId, authorRequestedId } = args;
+
+  context.prisma.mutation.updateAuthor({
+    data: {
+      friends: {
+        connect: {
+          id: authorRequestedId
+        }
+      }
+    },
+    where: {
+      id: authorId
+    }
+  });
+
+  context.prisma.mutation.updateAuthor({
+    data: {
+      friendshipRequested: {
+        connect: {
+          id: authorId
+        }
+      }
+    },
+    where: {
+      id: authorRequestedId
+    }
+  });
 };
 
 module.exports = {
@@ -185,5 +215,6 @@ module.exports = {
   createActivity,
   updateActivity,
   deleteActivity,
-  createTrip
+  createTrip,
+  requestFriendship
 };

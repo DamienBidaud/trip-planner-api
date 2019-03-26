@@ -23,15 +23,18 @@ type Trip {
   id: ID! @unique
   title: String!
   activities: [Activity!]!
+  creatore: Author
 }
 
 type Author {
   id: ID! @unique
   email: String! @unique
-  username: String!
+  username: String! @unique
   password: String!
   trips: [Trip!]!
   role: Role! @default(value: "USER")
+  friends: [Author!]! @relation(name: "Friends")
+  friendshipRequested: [Author!]! @relation(name: "FriendshipRequested")
 }
 
 enum Role {

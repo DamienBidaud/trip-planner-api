@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Mon Aug 20 2018 21:10:18 GMT+0100 (BST)
+# timestamp: Mon Sep 10 2018 21:23:49 GMT+0100 (BST)
 
 type Activity implements Node {
   id: ID!
@@ -423,6 +423,8 @@ type Author implements Node {
   password: String!
   trips(where: TripWhereInput, orderBy: TripOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Trip!]
   role: Role!
+  friends(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author!]
+  friendshipRequested(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author!]
 }
 
 """A connection to a list of items."""
@@ -440,7 +442,28 @@ input AuthorCreateInput {
   username: String!
   password: String!
   role: Role
-  trips: TripCreateManyInput
+  trips: TripCreateManyWithoutCreatoreInput
+  friends: AuthorCreateManyInput
+  friendshipRequested: AuthorCreateManyInput
+}
+
+input AuthorCreateManyInput {
+  create: [AuthorCreateInput!]
+  connect: [AuthorWhereUniqueInput!]
+}
+
+input AuthorCreateOneWithoutTripsInput {
+  create: AuthorCreateWithoutTripsInput
+  connect: AuthorWhereUniqueInput
+}
+
+input AuthorCreateWithoutTripsInput {
+  email: String!
+  username: String!
+  password: String!
+  role: Role
+  friends: AuthorCreateManyInput
+  friendshipRequested: AuthorCreateManyInput
 }
 
 """An edge in a connection."""
@@ -516,12 +539,67 @@ input AuthorSubscriptionWhereInput {
   node: AuthorWhereInput
 }
 
+input AuthorUpdateDataInput {
+  email: String
+  username: String
+  password: String
+  role: Role
+  trips: TripUpdateManyWithoutCreatoreInput
+  friends: AuthorUpdateManyInput
+  friendshipRequested: AuthorUpdateManyInput
+}
+
 input AuthorUpdateInput {
   email: String
   username: String
   password: String
   role: Role
-  trips: TripUpdateManyInput
+  trips: TripUpdateManyWithoutCreatoreInput
+  friends: AuthorUpdateManyInput
+  friendshipRequested: AuthorUpdateManyInput
+}
+
+input AuthorUpdateManyInput {
+  create: [AuthorCreateInput!]
+  connect: [AuthorWhereUniqueInput!]
+  disconnect: [AuthorWhereUniqueInput!]
+  delete: [AuthorWhereUniqueInput!]
+  update: [AuthorUpdateWithWhereUniqueNestedInput!]
+  upsert: [AuthorUpsertWithWhereUniqueNestedInput!]
+}
+
+input AuthorUpdateOneWithoutTripsInput {
+  create: AuthorCreateWithoutTripsInput
+  connect: AuthorWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: AuthorUpdateWithoutTripsDataInput
+  upsert: AuthorUpsertWithoutTripsInput
+}
+
+input AuthorUpdateWithoutTripsDataInput {
+  email: String
+  username: String
+  password: String
+  role: Role
+  friends: AuthorUpdateManyInput
+  friendshipRequested: AuthorUpdateManyInput
+}
+
+input AuthorUpdateWithWhereUniqueNestedInput {
+  where: AuthorWhereUniqueInput!
+  data: AuthorUpdateDataInput!
+}
+
+input AuthorUpsertWithoutTripsInput {
+  update: AuthorUpdateWithoutTripsDataInput!
+  create: AuthorCreateWithoutTripsInput!
+}
+
+input AuthorUpsertWithWhereUniqueNestedInput {
+  where: AuthorWhereUniqueInput!
+  update: AuthorUpdateDataInput!
+  create: AuthorCreateInput!
 }
 
 input AuthorWhereInput {
@@ -706,11 +784,18 @@ input AuthorWhereInput {
   trips_every: TripWhereInput
   trips_some: TripWhereInput
   trips_none: TripWhereInput
+  friends_every: AuthorWhereInput
+  friends_some: AuthorWhereInput
+  friends_none: AuthorWhereInput
+  friendshipRequested_every: AuthorWhereInput
+  friendshipRequested_some: AuthorWhereInput
+  friendshipRequested_none: AuthorWhereInput
 }
 
 input AuthorWhereUniqueInput {
   id: ID
   email: String
+  username: String
 }
 
 type BatchPayload {
@@ -1239,6 +1324,7 @@ type Trip implements Node {
   id: ID!
   title: String!
   activities(where: ActivityWhereInput, orderBy: ActivityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Activity!]
+  creatore(where: AuthorWhereInput): Author
 }
 
 """A connection to a list of items."""
@@ -1254,11 +1340,17 @@ type TripConnection {
 input TripCreateInput {
   title: String!
   activities: ActivityCreateManyInput
+  creatore: AuthorCreateOneWithoutTripsInput
 }
 
-input TripCreateManyInput {
-  create: [TripCreateInput!]
+input TripCreateManyWithoutCreatoreInput {
+  create: [TripCreateWithoutCreatoreInput!]
   connect: [TripWhereUniqueInput!]
+}
+
+input TripCreateWithoutCreatoreInput {
+  title: String!
+  activities: ActivityCreateManyInput
 }
 
 """An edge in a connection."""
@@ -1325,34 +1417,35 @@ input TripSubscriptionWhereInput {
   node: TripWhereInput
 }
 
-input TripUpdateDataInput {
-  title: String
-  activities: ActivityUpdateManyInput
-}
-
 input TripUpdateInput {
   title: String
   activities: ActivityUpdateManyInput
+  creatore: AuthorUpdateOneWithoutTripsInput
 }
 
-input TripUpdateManyInput {
-  create: [TripCreateInput!]
+input TripUpdateManyWithoutCreatoreInput {
+  create: [TripCreateWithoutCreatoreInput!]
   connect: [TripWhereUniqueInput!]
   disconnect: [TripWhereUniqueInput!]
   delete: [TripWhereUniqueInput!]
-  update: [TripUpdateWithWhereUniqueNestedInput!]
-  upsert: [TripUpsertWithWhereUniqueNestedInput!]
+  update: [TripUpdateWithWhereUniqueWithoutCreatoreInput!]
+  upsert: [TripUpsertWithWhereUniqueWithoutCreatoreInput!]
 }
 
-input TripUpdateWithWhereUniqueNestedInput {
-  where: TripWhereUniqueInput!
-  data: TripUpdateDataInput!
+input TripUpdateWithoutCreatoreDataInput {
+  title: String
+  activities: ActivityUpdateManyInput
 }
 
-input TripUpsertWithWhereUniqueNestedInput {
+input TripUpdateWithWhereUniqueWithoutCreatoreInput {
   where: TripWhereUniqueInput!
-  update: TripUpdateDataInput!
-  create: TripCreateInput!
+  data: TripUpdateWithoutCreatoreDataInput!
+}
+
+input TripUpsertWithWhereUniqueWithoutCreatoreInput {
+  where: TripWhereUniqueInput!
+  update: TripUpdateWithoutCreatoreDataInput!
+  create: TripCreateWithoutCreatoreInput!
 }
 
 input TripWhereInput {
@@ -1447,6 +1540,7 @@ input TripWhereInput {
   activities_every: ActivityWhereInput
   activities_some: ActivityWhereInput
   activities_none: ActivityWhereInput
+  creatore: AuthorWhereInput
 }
 
 input TripWhereUniqueInput {

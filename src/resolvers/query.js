@@ -35,10 +35,19 @@ const author = (_, args, context, info) => {
   return null;
 }
 
+const findAuthor = (_, args, context, info) => {
+  const {username} = args;
+
+  return context.prisma.query.authors({ where: {
+    username_contains: username
+  }});
+};
+
 module.exports = {
   validateAuth,
   activity,
   locations,
   author,
-  trip
+  trip,
+  findAuthor
 };

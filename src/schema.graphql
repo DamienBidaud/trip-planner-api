@@ -8,6 +8,7 @@ type Query {
   locations: [Location!]!
   author(token: String!): Author
   trip(tripId: ID!): Trip!
+  findAuthor(username: String): [Author!]!
 }
 
 type Mutation {
@@ -37,6 +38,7 @@ type Mutation {
   ): Trip
   signup(email: String!, password: String!, username: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  requestFriendship(authorId: ID!, authorRequestedId: ID!): Author
 }
 
 type AuthPayload {

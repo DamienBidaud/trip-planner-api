@@ -23,6 +23,7 @@ type Trip {
   id: ID! @unique
   title: String!
   activities: [Activity!]!
+  participants: [String!]!
 }
 
 type Author {
@@ -33,6 +34,7 @@ type Author {
   trips: [Trip!]!
   role: Role! @default(value: "USER")
 }
+
 
 enum Role {
   ADMIN

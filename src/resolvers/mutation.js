@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { findLocation, addLocation, getActivity, getTrip } = require("../utils");
 
-const signup = async (root, args, context, info) => {
+const signup = async (_, args, context, __) => {
   const password = await bcrypt.hash(args.password, 10);
   const author = await context.prisma.mutation.createAuthor(
     {
@@ -27,7 +27,7 @@ const signup = async (root, args, context, info) => {
   };
 };
 
-const login = async (root, args, context, info) => {
+const login = async (_, args, context, __) => {
   const author = await context.prisma.query.author(
     {
       where: {
@@ -60,7 +60,7 @@ const login = async (root, args, context, info) => {
   };
 };
 
-const createActivity = async (root, args, context, info) => {
+const createActivity = async (_, args, context, info) => {
   const { tripID, title, locations, price, startDate, endDate, type } = args;
   const trip = await context.prisma.query.trip(
     {
@@ -104,7 +104,7 @@ const createActivity = async (root, args, context, info) => {
   return getActivity(newActivity.id, context, info);
 };
 
-const createTrip = async (root, args, context, info) => {
+const createTrip = async (_, args, context, info) => {
   const { authorId, title } = args;
   const author = await context.prisma.query.author(
     {
@@ -143,41 +143,38 @@ const createTrip = async (root, args, context, info) => {
   return getTrip(newTrip.id, context, info);
 };
 
-const updateActivity = async (root, args, context, info) => {
-  const {
-    activityID,
-    title,
-    locations,
-    price,
-    startDate,
-    endDate,
-    type,
-    description
-  } = args;
+const updateActivity = async (_, args, context, info) => {
+  const { activityID, title, locations, price, startDate, endDate, type, description } = args;
 
-  return context.prisma.mutation.updateActivity({
-    data: {
-      title,
-      locations,
-      price,
-      startDate,
-      endDate,
-      type,
-      description
+  return context.prisma.mutation.updateActivity(
+    {
+      data: {
+        title,
+        locations,
+        price,
+        startDate,
+        endDate,
+        type,
+        description
+      },
+      where: {
+        id: activityID
+      }
     },
-    where: {
-      id: activityID
-    }
-  }, info)
+    info
+  );
 };
 
-const deleteActivity = async = (root, args, context, info) => {
-  return context.prisma.mutation.deleteActivity({
-    where: {
-      id: args.activityID
-    }
-  }, info)
-};
+const deleteActivity = (async = (_, args, context, info) => {
+  return context.prisma.mutation.deleteActivity(
+    {
+      where: {
+        id: args.activityID
+      }
+    },
+    info
+  );
+});
 
 module.exports = {
   signup,

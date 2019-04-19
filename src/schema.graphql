@@ -37,6 +37,7 @@ type Mutation {
   ): Trip
   signup(email: String!, password: String!, username: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+  addParticipants(tripID: ID!, participant: String!): Trip
 }
 
 type AuthPayload {

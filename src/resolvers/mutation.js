@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { findLocation, addLocation, getActivity, getTrip } = require("../utils");
+const { getActivity, getTrip } = require("../utils");
 
-const signup = async (_, args, context, __) => {
+const signup = async (_, args, context) => {
   const password = await bcrypt.hash(args.password, 10);
   const author = await context.prisma.mutation.createAuthor(
     {
@@ -27,7 +27,7 @@ const signup = async (_, args, context, __) => {
   };
 };
 
-const login = async (_, args, context, __) => {
+const login = async (_, args, context) => {
   const author = await context.prisma.query.author(
     {
       where: {
@@ -165,7 +165,7 @@ const updateActivity = async (_, args, context, info) => {
   );
 };
 
-const deleteActivity = (async = (_, args, context, info) => {
+const deleteActivity = async (_, args, context, info) => {
   return context.prisma.mutation.deleteActivity(
     {
       where: {
@@ -174,7 +174,28 @@ const deleteActivity = (async = (_, args, context, info) => {
     },
     info
   );
-});
+};
+
+const addParticipants = async (_, args, context, info) => {
+  const { tripID, participant } = args;
+  const trip = await getTrip(tripID, context, info);
+  const { participants } = trip;
+  participants.push(participant);
+
+  return context.prisma.mutation.updateTrip(
+    {
+      data: {
+        participants: {
+          set: participants
+        }
+      },
+      where: {
+        id: tripID
+      }
+    },
+    info
+  );
+};
 
 module.exports = {
   signup,
@@ -182,5 +203,6 @@ module.exports = {
   createActivity,
   updateActivity,
   deleteActivity,
-  createTrip
+  createTrip,
+  addParticipants
 };

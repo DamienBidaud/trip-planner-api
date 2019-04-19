@@ -1,5 +1,5 @@
 # source: http://localhost:4466
-# timestamp: Mon Aug 20 2018 21:10:18 GMT+0100 (BST)
+# timestamp: Fri Apr 19 2019 14:18:05 GMT+0100 (British Summer Time)
 
 type Activity implements Node {
   id: ID!
@@ -94,9 +94,7 @@ input ActivitySubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [ActivitySubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -494,9 +492,7 @@ input AuthorSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [AuthorSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -811,9 +807,7 @@ input LocationSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [LocationSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -1239,6 +1233,7 @@ type Trip implements Node {
   id: ID!
   title: String!
   activities(where: ActivityWhereInput, orderBy: ActivityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Activity!]
+  participants: [String!]
 }
 
 """A connection to a list of items."""
@@ -1253,12 +1248,17 @@ type TripConnection {
 
 input TripCreateInput {
   title: String!
+  participants: TripCreateparticipantsInput
   activities: ActivityCreateManyInput
 }
 
 input TripCreateManyInput {
   create: [TripCreateInput!]
   connect: [TripWhereUniqueInput!]
+}
+
+input TripCreateparticipantsInput {
+  set: [String!]
 }
 
 """An edge in a connection."""
@@ -1284,6 +1284,7 @@ enum TripOrderByInput {
 type TripPreviousValues {
   id: ID!
   title: String!
+  participants: [String!]
 }
 
 type TripSubscriptionPayload {
@@ -1303,9 +1304,7 @@ input TripSubscriptionWhereInput {
   """Logical NOT on all given filters combined by AND."""
   NOT: [TripSubscriptionWhereInput!]
 
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
 
   """
@@ -1327,11 +1326,13 @@ input TripSubscriptionWhereInput {
 
 input TripUpdateDataInput {
   title: String
+  participants: TripUpdateparticipantsInput
   activities: ActivityUpdateManyInput
 }
 
 input TripUpdateInput {
   title: String
+  participants: TripUpdateparticipantsInput
   activities: ActivityUpdateManyInput
 }
 
@@ -1342,6 +1343,10 @@ input TripUpdateManyInput {
   delete: [TripWhereUniqueInput!]
   update: [TripUpdateWithWhereUniqueNestedInput!]
   upsert: [TripUpsertWithWhereUniqueNestedInput!]
+}
+
+input TripUpdateparticipantsInput {
+  set: [String!]
 }
 
 input TripUpdateWithWhereUniqueNestedInput {

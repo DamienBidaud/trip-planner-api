@@ -176,11 +176,8 @@ const deleteActivity = async (_, args, context, info) => {
   );
 };
 
-const addParticipants = async (_, args, context, info) => {
-  const { tripID, participant } = args;
-  const trip = await getTrip(tripID, context, info);
-  const { participants } = trip;
-  participants.push(participant);
+const manageParticipants = async (_, args, context, info) => {
+  const { tripID, participants } = args;
 
   return context.prisma.mutation.updateTrip(
     {
@@ -204,5 +201,5 @@ module.exports = {
   updateActivity,
   deleteActivity,
   createTrip,
-  addParticipants
+  manageParticipants
 };

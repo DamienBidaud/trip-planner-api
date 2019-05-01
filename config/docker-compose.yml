@@ -25,5 +25,14 @@ services:
       MYSQL_ROOT_PASSWORD: prisma
     volumes:
       - mysql:/var/lib/mysql
+  api:
+    image: node:10.13.0
+    restart: always
+    ports: 
+      - "4000:4000"
+    working_dir: /home/ikimasho/api 
+    volumes:
+      - ../:/home/ikimasho/api
+    command: yarn start
 volumes:
   mysql:

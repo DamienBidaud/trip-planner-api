@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start:dev": "nodemon --watch './**/*.ts'  --exec ts-node index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint --fix"
   },
   "keywords": [],
   "author": "",

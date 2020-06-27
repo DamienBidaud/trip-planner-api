@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils Should match snapshot 1`] = `
+Object {
+  "addLocation": [Function],
+  "findLocation": [Function],
+  "getActivity": [Function],
+  "getTrip": [Function],
+}
+`;

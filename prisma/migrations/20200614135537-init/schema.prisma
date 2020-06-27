@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Activity {
+  id Int @id @default(autoincrement()) 
+  title String
+  locations Location[]
+  price Float?
+  startDate DateTime?
+  endDate DateTime?
+  type String?
+  description String?
+}
+
+model Location {
+  id Int @id @default(autoincrement()) 
+  country String
+  city String
+  longitude String?
+  latitude String?
+  type LocationType @default(UNIQUE)
+  googleUrl String?
+}
+
+model Trip {
+  id Int @id @default(autoincrement())
+  title String
+  activities Activity[]
+  participants String[]
+}
+
+model Author {
+  id Int @id @default(autoincrement())
+  email String @unique
+  username String
+  password String
+  trips Trip[]
+  role Role @default(USER)
+}
+
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum LocationType {
+  ORIGIN
+  DESTINATION
+  UNIQUE
+}

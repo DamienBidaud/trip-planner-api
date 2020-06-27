@@ -1,0 +1,680 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`typeDefs types Should match snapshot 1`] = `
+Object {
+  "definitions": Array [
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "fields": Array [
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "id",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "ID",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "title",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "locations",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "ListType",
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "Location",
+                  },
+                },
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "price",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "Float",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "startDate",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "endDate",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "type",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "description",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+      ],
+      "interfaces": Array [],
+      "kind": "ObjectTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "Activity",
+      },
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "fields": Array [
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "id",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "ID",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "country",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "city",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "longitude",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "latitude",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "type",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "LocationType",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "googleUrl",
+          },
+          "type": Object {
+            "kind": "NamedType",
+            "name": Object {
+              "kind": "Name",
+              "value": "String",
+            },
+          },
+        },
+      ],
+      "interfaces": Array [],
+      "kind": "ObjectTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "Location",
+      },
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "fields": Array [
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "id",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "ID",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "title",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "activities",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "ListType",
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "Activity",
+                  },
+                },
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "participants",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "ListType",
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "String",
+                  },
+                },
+              },
+            },
+          },
+        },
+      ],
+      "interfaces": Array [],
+      "kind": "ObjectTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "Trip",
+      },
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "fields": Array [
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "id",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "ID",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "email",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "username",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "password",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "trips",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "ListType",
+              "type": Object {
+                "kind": "NonNullType",
+                "type": Object {
+                  "kind": "NamedType",
+                  "name": Object {
+                    "kind": "Name",
+                    "value": "Trip",
+                  },
+                },
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "role",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Role",
+              },
+            },
+          },
+        },
+      ],
+      "interfaces": Array [],
+      "kind": "ObjectTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "Author",
+      },
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "fields": Array [
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "token",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "String",
+              },
+            },
+          },
+        },
+        Object {
+          "arguments": Array [],
+          "description": undefined,
+          "directives": Array [],
+          "kind": "FieldDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "author",
+          },
+          "type": Object {
+            "kind": "NonNullType",
+            "type": Object {
+              "kind": "NamedType",
+              "name": Object {
+                "kind": "Name",
+                "value": "Author",
+              },
+            },
+          },
+        },
+      ],
+      "interfaces": Array [],
+      "kind": "ObjectTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "AuthPayload",
+      },
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "kind": "EnumTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "Role",
+      },
+      "values": Array [
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "kind": "EnumValueDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "ADMIN",
+          },
+        },
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "kind": "EnumValueDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "USER",
+          },
+        },
+      ],
+    },
+    Object {
+      "description": undefined,
+      "directives": Array [],
+      "kind": "EnumTypeDefinition",
+      "name": Object {
+        "kind": "Name",
+        "value": "LocationType",
+      },
+      "values": Array [
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "kind": "EnumValueDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "ORIGIN",
+          },
+        },
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "kind": "EnumValueDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "DESTINATION",
+          },
+        },
+        Object {
+          "description": undefined,
+          "directives": Array [],
+          "kind": "EnumValueDefinition",
+          "name": Object {
+            "kind": "Name",
+            "value": "UNIQUE",
+          },
+        },
+      ],
+    },
+  ],
+  "kind": "Document",
+  "loc": Object {
+    "end": 753,
+    "start": 0,
+  },
+}
+`;

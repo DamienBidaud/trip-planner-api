@@ -13,6 +13,16 @@ const server = new ApolloServer({
   context: () => ({
     prisma: new PrismaClient(),
   }),
+  onHealthCheck: () => {
+    return new Promise((resolve, reject) => {
+      // Replace the `true` in this conditional with more specific checks!
+      if (true) {
+        resolve();
+      } else {
+        reject();
+      }
+    });
+  },
 });
 
 // The `listen` method launches a web server.

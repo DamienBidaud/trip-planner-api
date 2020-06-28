@@ -1,32 +1,47 @@
 {
   "name": "trip-planner-api",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "lint": "eslint ./ --fix"
+    "test": "jest",
+    "start:dev": "nodemon --watch './**/*.ts'  --exec ts-node index.ts",
+    "build": "tsc",
+    "lint": "eslint --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@prisma/cli": "^2.0.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/jest": "^26.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.0.12",
+    "eslint": "^7.3.1",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5",
+    "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
   },
   "dependencies": {
+    "@prisma/client": "^2.0.0",
+    "apollo-server": "^2.14.4",
     "bcryptjs": "^2.4.3",
-    "graphql-yoga": "^1.14.10",
-    "jsonwebtoken": "^8.3.0",
-    "prisma": "^1.10.2",
-    "prisma-binding": "^2.1.0"
+    "graphql": "^15.1.0",
+    "jsonwebtoken": "^8.5.1"
   },
-  "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-config-with-prettier": "^6.0.0",
-    "eslint-plugin-dollar-sign": "^1.0.1",
-    "eslint-plugin-flowtype": "^3.4.1",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jest": "^22.4.1",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-security": "^1.4.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,md}": "prettier --write",
+    "*.{ts}": "eslint --fix"
   }
 }

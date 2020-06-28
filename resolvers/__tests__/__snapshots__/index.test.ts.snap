@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resolvers Should match snapshot 1`] = `
+Object {
+  "Mutation": Object {
+    "login": [Function],
+    "signup": [Function],
+  },
+  "Query": Object {
+    "activity": [Function],
+    "author": [Function],
+    "locations": [Function],
+    "trip": [Function],
+    "validateAuth": [Function],
+  },
+}
+`;

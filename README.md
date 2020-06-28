@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/DamienBidaud/trip-planner-api/workflows/Node.js%20CI/badge.svg)
+
 # Trip Planer API
 
 ## Set up
